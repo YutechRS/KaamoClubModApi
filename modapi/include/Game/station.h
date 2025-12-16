@@ -22,8 +22,7 @@
 
 class Station {
     private:
-        static inline uintptr_t stationname = 0;
-        static inline uintptr_t stationtechlevel = 0;
+        static inline uintptr_t station = 0;
     public:
         static void init(void);
         static std::string getstationname(void);

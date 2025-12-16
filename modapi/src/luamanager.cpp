@@ -51,7 +51,8 @@ void LuaManager::bind_api()
 
     lua_state.new_usertype<Mission>("Mission",
         sol::no_constructor,
-        "id", sol::property(&Mission::getmissionid, &Mission::setmissionid)
+        "id", sol::property(&Mission::getmissionid, &Mission::setmissionid),
+        "completedsidemissions", sol::property(&Mission::getcompletedsidemissions, &Mission::setcompletedsidemission)
     );
 
     lua_state.new_usertype<Station>("Station",

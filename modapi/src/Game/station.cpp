@@ -20,30 +20,29 @@
 
 void Station::init()
 {
-    stationname = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
-    stationtechlevel = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C; 
+    station = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
 }
 
 std::string Station::getstationname()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(stationname, {0x160, 0x0, 0x0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(station, {0x160, 0x0, 0x0});
     return MemoryUtils::ReadWideString(finaladdr);
 }
 
 void Station::setstationname(const std::string value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(stationname, {0x160, 0x0, 0x0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(station, {0x160, 0x0, 0x0});
     MemoryUtils::WriteWideString(finaladdr, value);
 }
 
 int Station::getstationtechlevel()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(stationtechlevel, {0x160, 0x1C});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(station, {0x160, 0x1C});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Station::setstationtechlevel(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(stationtechlevel, {0x160, 0x1C});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(station, {0x160, 0x1C});
     MemoryUtils::Write<int>(finaladdr, value);
 }

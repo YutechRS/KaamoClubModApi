@@ -22,10 +22,12 @@
 
 class Mission {
     private:
-        static inline uintptr_t missionid = 0;
+        static inline uintptr_t mission = 0;
     public:
         static void init(void);
         static int getmissionid(void);
         static void setmissionid(int value);
+        static int getcompletedsidemissions(void);
+        static void setcompletedsidemission(int value);
 };
 #endif

@@ -22,7 +22,7 @@
 
 class System {
     private:
-        static inline uintptr_t systemid = 0;
+        static inline uintptr_t system = 0;
     public:
         static void init(void);
         static int getsystemid(void);

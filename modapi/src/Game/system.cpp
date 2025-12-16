@@ -20,17 +20,17 @@
 
 void System::init()
 {
-    systemid = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
+    system = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
 }
 
 int System::getsystemid()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(systemid, {0x168, 0x14});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(system, {0x168, 0x14});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void System::setsystemid(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(systemid, {0x168, 0x14});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(system, {0x168, 0x14});
     MemoryUtils::Write<int>(finaladdr, value);
 }

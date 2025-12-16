@@ -20,17 +20,29 @@
 
 void Mission::init()
 {
-    missionid = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
+    mission = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
 }
 
 int Mission::getmissionid()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(missionid, {0x1B0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(mission, {0x1B0});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Mission::setmissionid(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(missionid, {0x1B0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(mission, {0x1B0});
+    MemoryUtils::Write<int>(finaladdr, value);
+}
+
+int Mission::getcompletedsidemissions()
+{
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(mission, {0x18C});
+    return MemoryUtils::Read<int>(finaladdr);
+}
+
+void Mission::setcompletedsidemission(int value)
+{
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(mission, {0x18C});
     MemoryUtils::Write<int>(finaladdr, value);
 }

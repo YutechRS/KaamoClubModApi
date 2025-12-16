@@ -22,10 +22,7 @@
 
 class Player {
     private:
-        static inline uintptr_t money = 0;
-        static inline uintptr_t maxcargo = 0;
-        static inline uintptr_t cargo = 0;
-        static inline uintptr_t shiparmor = 0;
+        static inline uintptr_t player = 0;
     public:
         static void init(void);
         static int getmoney(void);

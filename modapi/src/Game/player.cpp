@@ -20,57 +20,54 @@
 
 void Player::init()
 {
-    money = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
-    maxcargo = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
-    cargo = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
-    shiparmor = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
+    player = MemoryUtils::GetModuleBase("GoF2.exe") + 0x20AD6C;
 }
 
 int Player::getmoney()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(money, {0x174});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x174});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Player::setmoney(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(money, {0x174});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x174});
     MemoryUtils::Write<int>(finaladdr, value);
 }
 
 int Player::getmaxcargo()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(maxcargo, {0x154, 0x0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x0});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Player::setmaxcargo(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(maxcargo, {0x154, 0x0});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x0});
     MemoryUtils::Write<int>(finaladdr, value);
 }
 
 int Player::getcargo()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(maxcargo, {0x154, 0x10});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x10});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Player::setcargo(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(maxcargo, {0x154, 0x10});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x10});
     MemoryUtils::Write<int>(finaladdr, value);
 }
 
 int Player::getshiparmor()
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(shiparmor, {0x154, 0x20});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x20});
     return MemoryUtils::Read<int>(finaladdr);
 }
 
 void Player::setshiparmor(int value)
 {
-    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(shiparmor, {0x154, 0x20});
+    uintptr_t finaladdr = MemoryUtils::GetPointerAddress(player, {0x154, 0x20});
     MemoryUtils::Write<int>(finaladdr, value);
 }
 
