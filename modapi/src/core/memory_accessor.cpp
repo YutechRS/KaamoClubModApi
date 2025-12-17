@@ -17,6 +17,10 @@ MemoryResult<std::string> MemoryAccessor::read_string(Address address, std::size
         return std::unexpected(MemoryError::NullPointer);
     }
     
+    if (max_size == 0) {
+        return std::unexpected(MemoryError::InvalidSize);
+    }
+    
     std::vector<char> buffer(max_size);
     SIZE_T bytes_read = 0;
     
@@ -35,6 +39,10 @@ MemoryResult<std::string> MemoryAccessor::read_string(Address address, std::size
 MemoryResult<std::string> MemoryAccessor::read_wide_string(Address address, std::size_t max_size) const noexcept {
     if (address == 0) {
         return std::unexpected(MemoryError::NullPointer);
+    }
+    
+    if (max_size == 0) {
+        return std::unexpected(MemoryError::InvalidSize);
     }
     
     std::vector<wchar_t> buffer(max_size);

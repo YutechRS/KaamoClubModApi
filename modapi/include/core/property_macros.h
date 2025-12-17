@@ -53,4 +53,3 @@
 
 #define KAAMO_BIND_METHOD(usertype, cpp_name, lua_name) \
     lua_name, &usertype::cpp_name
-

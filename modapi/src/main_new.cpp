@@ -5,9 +5,10 @@
 
 namespace {
     DWORD WINAPI main_thread(LPVOID param) {
-        FILE* console_file = nullptr;
-        freopen_s(&console_file, "CONOUT$", "w", stdout);
-        freopen_s(&console_file, "CONOUT$", "w", stderr);
+        FILE* stdout_file = nullptr;
+        FILE* stderr_file = nullptr;
+        freopen_s(&stdout_file, "CONOUT$", "w", stdout);
+        freopen_s(&stderr_file, "CONOUT$", "w", stderr);
         
         std::cout << "=====================================" << std::endl;
         std::cout << "  KaamoClubModAPI v2.0" << std::endl;
@@ -18,8 +19,11 @@ namespace {
         
         if (!api.initialize()) {
             std::cerr << "Failed to initialize ModAPI" << std::endl;
-            if (console_file) {
-                fclose(console_file);
+            if (stdout_file) {
+                fclose(stdout_file);
+            }
+            if (stderr_file) {
+                fclose(stderr_file);
             }
             FreeLibraryAndExitThread(static_cast<HMODULE>(param), 1);
             return 1;
@@ -29,8 +33,11 @@ namespace {
         
         api.shutdown();
         
-        if (console_file) {
-            fclose(console_file);
+        if (stdout_file) {
+            fclose(stdout_file);
+        }
+        if (stderr_file) {
+            fclose(stderr_file);
         }
         
         FreeLibraryAndExitThread(static_cast<HMODULE>(param), 0);
